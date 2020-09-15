@@ -13,8 +13,15 @@ const domProject = () => {
     projectsContainer.addEventListener('click', e => {
         if(e.target.tagName.toLowerCase() === 'a') {
             selectedProjectId = e.target.dataset.projectId
-            storage.save(selectedProjectId)
+            storage.save(projects, selectedProjectId)
             render()
+        }
+
+        if(e.target.tagName.toLowerCase() === 'i') {
+            projects = projects.filter(project => project.id !== selectedProjectId)
+            storage.save(projects, null)
+            render()
+
         }
     })
 
@@ -30,7 +37,7 @@ const domProject = () => {
         newProjectInput.value = null
     
         projects.push(project)
-        storage.save()
+        storage.save(projects, selectedProjectId)
         render()
     })
     const createProject = name => {
@@ -48,6 +55,9 @@ const domProject = () => {
             projectElement.textContent = project.name
             if(project.id === selectedProjectId) {
                 projectElement.classList.add('active')
+                const deleteProjectBtn = document.createElement('i')
+                deleteProjectBtn.classList.add('delete-project', 'fas', 'fa-trash-alt')
+                projectElement.appendChild(deleteProjectBtn)
             }
             projectsContainer.appendChild(projectElement)
         })

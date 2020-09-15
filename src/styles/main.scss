@@ -8,3 +8,18 @@ body {
 .todo {
     cursor: pointer;
 }
+
+.active {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-trash-alt {
+    font-size: 27px;
+    color: #000;
+
+    &:hover {
+        color: rgb(128, 47, 0);
+    }
+}

@@ -7,8 +7,8 @@ const storage = (() => {
 
     let selectedProject = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY)
 
-    const save = (selectedProject) => {
-        localStorage.setItem(LOCAL_STORAGE_PROJECT_KEY, JSON.stringify(projectsDb))
+    const save = (projects, selectedProject) => {
+        localStorage.setItem(LOCAL_STORAGE_PROJECT_KEY, JSON.stringify(projects))
         localStorage.setItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY, selectedProject)
     }
 
