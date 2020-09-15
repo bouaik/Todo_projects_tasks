@@ -9,6 +9,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 projects">
+                <h3 class="text-center">Projects</h3>
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action active">
                       Cras justo odio
@@ -26,7 +27,7 @@
                 </form>
             </div>
             <div class="col-md-8">
-                <h3 class="text-center">Projects</h3>
+                <h3 class="text-center">Todos</h3>
                 <ul class="list-group">
                     <li class="list-group-item disabled" aria-disabled="true">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -35,14 +36,54 @@
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
                 <form action="" class="mt-1">
-                    <div class="form-group d-flex">
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="New task">
-                        <button type="submit" class="btn btn-primary mb-2">Add</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary mb-2 d-block w-100" data-toggle="modal" data-target="#exampleModal">Add</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">New Todo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label for="new-task-title">Task Title: </label>
+                      <input type="text" class="form-control" id="new-task-title" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                      <label for="task-priority-select">Priority: </label>
+                      <select class="form-control" id="task-priority-select">
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="task-deadline">Deadline: </label>
+                      <input type="date" class="form-control" id="task-deadline">
+                  </div>
+                    
+                    
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="add-todo" type="button" class="btn btn-info" data-dismiss="modal">Add</button>
+              </div>
+        </div>
+    </div>
+</div>
+
 
 
     <script src="bundle.js"></script>

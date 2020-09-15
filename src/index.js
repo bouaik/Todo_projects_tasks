@@ -1,3 +1,6 @@
 import './styles/main.scss'
 import 'bootstrap'
-console.log('hello world')
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})
