@@ -1,14 +1,24 @@
-import storage from './storage'
+import { storage } from './storage'
 
 const domProject = () => {
 
     let projects = storage.projectsDb
 
-
+    let selectedProjectId = storage.selectedProject
 
     const projectsContainer = document.querySelector('[data-projects]')
     const newProjectFrom = document.querySelector('[data-new-project-form]')
     const newProjectInput = document.querySelector('[data-new-project-input]')
+
+    projectsContainer.addEventListener('click', e => {
+        if(e.target.tagName.toLowerCase() === 'a') {
+            selectedProjectId = e.target.dataset.projectId
+            storage.save(selectedProjectId)
+            render()
+        }
+    })
+
+
     newProjectFrom.addEventListener('submit', (e) => {
         e.preventDefault()
         const projectName = newProjectInput.value
@@ -23,8 +33,7 @@ const domProject = () => {
         storage.save()
         render()
     })
-    const createProject = (name) => {
-    
+    const createProject = name => {
         return {id: Date.now().toString(), name: name, todos: []}
     }
     
@@ -37,6 +46,9 @@ const domProject = () => {
             projectElement.setAttribute('href', '#')
             projectElement.dataset.projectId = project.id
             projectElement.textContent = project.name
+            if(project.id === selectedProjectId) {
+                projectElement.classList.add('active')
+            }
             projectsContainer.appendChild(projectElement)
         })
     }
@@ -46,8 +58,6 @@ const domProject = () => {
     }
     
     render()
-
-
 }
 
 export { domProject }
