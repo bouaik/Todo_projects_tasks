@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <!-- <script src="https://kit.fontawesome.com/6887534a1e.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/6887534a1e.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 projects">
                 <h3 class="text-center">Projects</h3>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active">
-                      Cras justo odio
-                    </a>
+                <div class="list-group" data-projects>
+                    <a href="#" class="list-group-item list-group-item-action active">Cras justo odio</a>
                     <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
                     <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
                     <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
                 </div>
-                <form action="" class="mt-1">
+                <form action="" class="mt-1"  data-new-project-form>
                     <div class="form-group d-flex">
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="New project">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="New project" data-new-project-input>
                         <button type="submit" class="btn btn-primary mb-2">Add</button>
                     </div>
                 </form>
@@ -30,16 +28,16 @@
                 <h3 class="text-center">Todos</h3>
                 <ul class="list-group todos">
                     <li class="list-group-item todo disabled" aria-disabled="true">Cras justo odio</li>
-                    <li class="list-group-item todo">Dapibus ac facilisis in</li>
+                    <li class="list-group-item todo">Dapibus ac facilisis in
+                        <i class="fas fa-edit"></i>
+                    </li>
                     <li class="list-group-item todo">Morbi leo risus</li>
                     <li class="list-group-item todo">Porta ac consectetur ac</li>
                     <li class="list-group-item todo">Vestibulum at eros</li>
                 </ul>
-                <form action="" class="mt-1">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary mb-2 d-block w-100" data-toggle="modal" data-target="#exampleModal">Add</button>
-                    </div>
-                </form>
+                <div class="form-group mt-1">
+                    <button type="submit" class="btn btn-primary mb-2 d-block w-100" data-toggle="modal" data-target="#exampleModal">Add</button>
+                </div>
             </div>
         </div>
     </div>
