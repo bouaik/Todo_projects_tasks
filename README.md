@@ -84,6 +84,7 @@ To run Todo app locally, clone the repository, navigate to it's containing direc
 git clone https://github.com/bouaik/Todo_projects_tasks.git
 cd Todo_projects_tasks
 yarn
+yarn build
 yarn start
 ```
 then go to this url

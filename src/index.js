@@ -1,5 +1,5 @@
-import './styles/main.scss';
 import 'bootstrap';
+import './styles/main.scss';
 
 import { domContent } from './js/domContent';
 
