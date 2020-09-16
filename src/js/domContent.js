@@ -81,7 +81,7 @@ const domProject = () => {
 
 
     const createTodo = (a, b, c, d) => {
-        return {id: `i${Date.now().toString()}`, name: a, description: b, priority: c, dueDate: d}
+        return {id: `i${Date.now().toString()}`, name: a, description: b, priority: c, dueDate: d, complete: false}
     }
 
 
@@ -122,11 +122,10 @@ const domProject = () => {
         })
     }
 
+
     const renderTodos = (selectedProject) => {
         selectedProject.todos.forEach(todo => {
             const todoElement = document.importNode(todoTemplate.content, true)
-
-            const completedtodo = todoElement.querySelector('.complete-todo')
 
             const collapse = todoElement.querySelector('.collapse')
             const todoLink = todoElement.querySelector('.todo')
@@ -134,6 +133,15 @@ const domProject = () => {
             const todoPriority = todoElement.querySelector('.priority-display')
             const todoDueDate = todoElement.querySelector('.deadline-display')
 
+            const checkbox = todoElement.querySelector('input')
+            checkbox.id = todo.id
+            checkbox.checked = todo.complete
+
+            const label = todoElement.querySelector('label')
+            label.htmlFor = todo.id
+
+
+            
             todoLink.setAttribute('href', `#${todo.id}`)
             collapse.setAttribute('id', todo.id)
 
@@ -143,14 +151,23 @@ const domProject = () => {
             todoPriority.append(todo.priority)
             todoDueDate.append(todo.dueDate)
 
-
             allTodos.appendChild(todoElement)
 
-
-            completedtodo.addEventListener('click', () => {
-                todoLink.classList.toggle('todo-complete')
-                console.log('hello world')
+            checkbox.addEventListener('click', () => {
+                if(checkbox.checked) {
+                    todo.complete = true
+                    storage.save(projects, selectedProjectId)
+                    render()
+                }else {
+                    todo.complete = false
+                    todoLink.classList.remove('todo-complete')
+                    storage.save(projects, selectedProjectId)
+                }
             })
+
+            if(todo.complete) {
+                todoLink.classList.add('todo-complete')
+            } 
 
 
         })
