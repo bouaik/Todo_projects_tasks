@@ -7,6 +7,9 @@ body {
 
 .todo {
     cursor: pointer;
+     &:hover {
+        background-color: #f8f9fa;
+     }
 }
 
 .active {
@@ -22,4 +25,9 @@ body {
     &:hover {
         color: rgb(128, 47, 0);
     }
+}
+
+
+.d-none {
+    display: none !important;
 }

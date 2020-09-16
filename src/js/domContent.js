@@ -10,6 +10,10 @@ const domProject = () => {
     const newProjectFrom = document.querySelector('[data-new-project-form]')
     const newProjectInput = document.querySelector('[data-new-project-input]')
 
+
+    const todoProjectTitle = document.querySelector('[data-todos-title]')
+    const todosContainer = document.querySelector('[data-todos-container]')
+
     projectsContainer.addEventListener('click', e => {
         if(e.target.tagName.toLowerCase() === 'a') {
             selectedProjectId = e.target.dataset.projectId
@@ -19,7 +23,8 @@ const domProject = () => {
 
         if(e.target.tagName.toLowerCase() === 'i') {
             projects = projects.filter(project => project.id !== selectedProjectId)
-            storage.save(projects, null)
+            selectedProjectId = null
+            storage.save(projects, selectedProjectId)
             render()
 
         }
@@ -46,7 +51,22 @@ const domProject = () => {
     
     const render = () => {
         clearElement(projectsContainer)
-    
+        renderProject()
+
+        const selectedProject = projects.find(project => project.id === selectedProjectId)
+
+        if (selectedProjectId == null) {
+            todosContainer.style.display = 'none'
+        } else {
+            todosContainer.style.display = ''
+            todoProjectTitle.textContent = selectedProject.name
+        }
+
+
+
+    }
+
+    const renderProject = () => {
         projects.forEach(project => {
             const projectElement = document.createElement('a')
             projectElement.classList.add('list-group-item', 'list-group-item-action')

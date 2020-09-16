@@ -10,6 +10,7 @@ var jQuery = require('jquery')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
+
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })
