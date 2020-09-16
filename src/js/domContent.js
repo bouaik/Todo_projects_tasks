@@ -17,6 +17,13 @@ const domProject = () => {
 
     const todoTemplate = document.getElementById('todo-template')
 
+
+    const addTodo = document.getElementById('add-todo')
+    const newTodoTitle = document.getElementById('new-todo-title')
+    const newTodoDescription= document.getElementById('todo-description-text')
+    const newTodoPriority = document.getElementById('todo-priority-select')
+    const newTodoDueDate = document.getElementById('todo-deadline')
+
     projectsContainer.addEventListener('click', e => {
         if(e.target.tagName.toLowerCase() === 'a') {
             selectedProjectId = e.target.dataset.projectId
@@ -48,16 +55,38 @@ const domProject = () => {
         storage.save(projects, selectedProjectId)
         render()
     })
+
+    addTodo.addEventListener('click', () => {
+        const todoTitileName = newTodoTitle.value
+        const todoDescriptionName = newTodoDescription.value
+        const todoPriorityName = newTodoPriority.value
+        const todoDueDateName = newTodoDueDate.value
+        if (todoTitileName === '' || todoDescriptionName === '' || todoPriorityName === '' || todoDueDateName === '') {
+            alert('fill all fields')
+            return
+        }
+        const todo = createTodo(todoTitileName, todoDescriptionName, todoPriorityName, todoDueDateName)
+
+        newTodoTitle.value = ''
+        newTodoDescription.value = ''
+        newTodoPriority.value = ''
+        newTodoDueDate.value = ''
+
+        const selectedProject = projects.find(project => project.id === selectedProjectId)
+
+        selectedProject.todos.push(todo)
+        storage.save(projects, selectedProjectId)
+        render()
+    })
+
+
+    const createTodo = (a, b, c, d) => {
+        return {id: `i${Date.now().toString()}`, name: a, description: b, priority: c, dueDate: d}
+    }
+
+
     const createProject = name => {
-        return {id: Date.now().toString(), name: name, todos: [ 
-            {
-                id: "example",
-                name: "secondTodo",
-                description: "lhoussaine is a goood person and he can code very well.",
-                priority: "low",
-                dueDate: "12/13/1415"
-            }
-        ]}
+        return {id: Date.now().toString(), name: name, todos: []}
     }
     
     const render = () => {
@@ -98,7 +127,6 @@ const domProject = () => {
             const todoElement = document.importNode(todoTemplate.content, true)
 
             const completedtodo = todoElement.querySelector('.complete-todo')
-            // completedtodo.id = todo.id
 
             const collapse = todoElement.querySelector('.collapse')
             const todoLink = todoElement.querySelector('.todo')
@@ -117,10 +145,6 @@ const domProject = () => {
 
 
             allTodos.appendChild(todoElement)
-
-            console.log(completedtodo)
-            console.log(todoElement)
-            console.log(todo)
 
 
             completedtodo.addEventListener('click', () => {
