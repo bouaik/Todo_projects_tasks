@@ -27,9 +27,9 @@
             <div class="col-md-8" data-todos-container>
                 <h3 class="text-center" data-todos-title>Todos</h3>
                 <ul class="list-group todos" data-todos>
-                    <div class="mb-1">
+                    <!-- <div class="mb-1">
                         <p class="p-0 m-0">
-                            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">First Todo</a>
+                            <a class="list-group-item todo" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">First Todo</a>
                         </p>
                         <div class="collapse" id="collapseExample">
                             <div class="card card-body todo-collapse">
@@ -46,21 +46,12 @@
                                     <div>
                                         <i class="fas fa-edit edit-todo"></i>
                                         <i class="fas fa-trash-alt delete-todo"></i>
+                                        <i class="fas fa-check-double complete-todo"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-1">
-                        <p class="p-0 m-0">
-                            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">Second Todo</a>
-                        </p>
-                        <div class="collapse" id="collapseExample2">
-                            <div class="card card-body  bg-warning">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </ul>
                 <div class="form-group mt-1">
                     <button type="submit" class="btn btn-primary mb-2 d-block w-100" data-toggle="modal" data-target="#exampleModal">Add</button>
@@ -107,6 +98,31 @@
     </div>
 </div>
 
+
+<template id="todo-template">
+    <div class="mb-1">
+        <p class="p-0 m-0">
+            <a class="list-group-item todo" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample"></a>
+        </p>
+        <div class="collapse">
+            <div class="card card-body todo-collapse">
+                <div class="description">
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    <div class="btn btn-info priority-display">
+                    </div>
+                    <div class="deadline-display">
+                    </div>
+                    <div>
+                        <i class="fas fa-edit edit-todo"></i>
+                        <i class="fas fa-trash-alt delete-todo"></i>
+                        <i class="fas fa-check-double complete-todo"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 
 

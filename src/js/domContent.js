@@ -15,6 +15,8 @@ const domProject = () => {
     const todoProjectTitle = document.querySelector('[data-todos-title]')
     const allTodos = document.querySelector('[data-todos]')
 
+    const todoTemplate = document.getElementById('todo-template')
+
     projectsContainer.addEventListener('click', e => {
         if(e.target.tagName.toLowerCase() === 'a') {
             selectedProjectId = e.target.dataset.projectId
@@ -47,7 +49,15 @@ const domProject = () => {
         render()
     })
     const createProject = name => {
-        return {id: Date.now().toString(), name: name, todos: []}
+        return {id: Date.now().toString(), name: name, todos: [ 
+            {
+                id: "example",
+                name: "secondTodo",
+                description: "lhoussaine is a goood person and he can code very well.",
+                priority: "low",
+                dueDate: "12/13/1415"
+            }
+        ]}
     }
     
     const render = () => {
@@ -61,7 +71,7 @@ const domProject = () => {
         } else {
             todosContainer.style.display = ''
             todoProjectTitle.textContent = selectedProject.name
-            // clearElement(allTodos)
+            clearElement(allTodos)
             renderTodos(selectedProject)
         }
     }
@@ -85,7 +95,40 @@ const domProject = () => {
 
     const renderTodos = (selectedProject) => {
         selectedProject.todos.forEach(todo => {
-            
+            const todoElement = document.importNode(todoTemplate.content, true)
+
+            const completedtodo = todoElement.querySelector('.complete-todo')
+            // completedtodo.id = todo.id
+
+            const collapse = todoElement.querySelector('.collapse')
+            const todoLink = todoElement.querySelector('.todo')
+            const todoDescription = todoElement.querySelector('.description')
+            const todoPriority = todoElement.querySelector('.priority-display')
+            const todoDueDate = todoElement.querySelector('.deadline-display')
+
+            todoLink.setAttribute('href', `#${todo.id}`)
+            collapse.setAttribute('id', todo.id)
+
+
+            todoLink.append(todo.name)
+            todoDescription.append(todo.description)
+            todoPriority.append(todo.priority)
+            todoDueDate.append(todo.dueDate)
+
+
+            allTodos.appendChild(todoElement)
+
+            console.log(completedtodo)
+            console.log(todoElement)
+            console.log(todo)
+
+
+            completedtodo.addEventListener('click', () => {
+                todoLink.classList.toggle('todo-complete')
+                console.log('hello world')
+            })
+
+
         })
 
     }
