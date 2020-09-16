@@ -1,15 +1,14 @@
 import { storage } from './storage'
 
-const domProject = () => {
+const domContent = () => {
 
     let projects = storage.projectsDb
 
-    let selectedProjectId = storage.selectedProject
+    let selectedProjectId = "1"
 
     const projectsContainer = document.querySelector('[data-projects]')
     const newProjectFrom = document.querySelector('[data-new-project-form]')
     const newProjectInput = document.querySelector('[data-new-project-input]')
-
 
     const todosContainer = document.querySelector('[data-todos-container]')
     const todoProjectTitle = document.querySelector('[data-todos-title]')
@@ -75,6 +74,7 @@ const domProject = () => {
         const selectedProject = projects.find(project => project.id === selectedProjectId)
 
         selectedProject.todos.push(todo)
+        projects[0].todos.push(todo)
         storage.save(projects, selectedProjectId)
         render()
     })
@@ -92,6 +92,7 @@ const domProject = () => {
     const render = () => {
         clearElement(projectsContainer)
         renderProject()
+        renderTodos(projects[0])
 
         const selectedProject = projects.find(project => project.id === selectedProjectId)
 
@@ -189,4 +190,4 @@ const domProject = () => {
     render()
 }
 
-export { domProject }
+export { domContent }

@@ -1,7 +1,7 @@
 import './styles/main.scss'
 import 'bootstrap'
 
-import { domProject } from './js/domContent'
+import { domContent } from './js/domContent'
 
 var jQuery = require('jquery')
 
@@ -15,7 +15,7 @@ $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })
 
-domProject()
+domContent()
 
 
 

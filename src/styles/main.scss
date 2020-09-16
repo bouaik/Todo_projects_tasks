@@ -1,5 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 body {
     background: tomato;
@@ -54,3 +54,9 @@ body {
     cursor: pointer;
 }
 
+
+
+.project-title, [data-todos-title]  {
+        font-family: 'Anton', sans-serif;
+        font-size: 30px;
+}
