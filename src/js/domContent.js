@@ -123,6 +123,7 @@ const domProject = () => {
     }
 
 
+
     const renderTodos = (selectedProject) => {
         selectedProject.todos.forEach(todo => {
             const todoElement = document.importNode(todoTemplate.content, true)
@@ -132,6 +133,8 @@ const domProject = () => {
             const todoDescription = todoElement.querySelector('.description')
             const todoPriority = todoElement.querySelector('.priority-display')
             const todoDueDate = todoElement.querySelector('.deadline-display')
+            const deleteTodo = todoElement.querySelector('.delete-todo')
+
 
             const checkbox = todoElement.querySelector('input')
             checkbox.id = todo.id
@@ -167,11 +170,16 @@ const domProject = () => {
 
             if(todo.complete) {
                 todoLink.classList.add('todo-complete')
-            } 
+            }
 
+
+            deleteTodo.addEventListener('click', () => {
+                selectedProject.todos = selectedProject.todos.filter(todo => todo.id !== collapse.id)
+                storage.save(projects, selectedProjectId)
+                render()
+            })
 
         })
-
     }
     
     const clearElement= (element) => {
