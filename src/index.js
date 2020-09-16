@@ -1,9 +1,9 @@
 import 'bootstrap';
-const jQuery = require('jquery');
 import './styles/main.scss';
 
 import { domContent } from './js/domContent';
 
+const jQuery = require('jquery');
 
 
 /* eslint-disable no-multi-assign, no-undef */
