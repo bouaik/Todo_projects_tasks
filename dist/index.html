@@ -27,13 +27,40 @@
             <div class="col-md-8" data-todos-container>
                 <h3 class="text-center" data-todos-title>Todos</h3>
                 <ul class="list-group todos" data-todos>
-                    <li class="list-group-item todo">Cras justo odio</li>
-                    <li class="list-group-item todo">Dapibus ac facilisis in
-                        <i class="fas fa-edit"></i>
-                    </li>
-                    <li class="list-group-item todo">Morbi leo risus</li>
-                    <li class="list-group-item todo">Porta ac consectetur ac</li>
-                    <li class="list-group-item todo">Vestibulum at eros</li>
+                    <div class="mb-1">
+                        <p class="p-0 m-0">
+                            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">First Todo</a>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body todo-collapse">
+                                <div class="description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, consequuntur.
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <div class="btn btn-info priority-display">
+                                        low
+                                    </div>
+                                    <div class="deadline-display">
+                                        22/22/2222
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-edit edit-todo"></i>
+                                        <i class="fas fa-trash-alt delete-todo"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <p class="p-0 m-0">
+                            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">Second Todo</a>
+                        </p>
+                        <div class="collapse" id="collapseExample2">
+                            <div class="card card-body  bg-warning">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                            </div>
+                        </div>
+                    </div>
                 </ul>
                 <div class="form-group mt-1">
                     <button type="submit" class="btn btn-primary mb-2 d-block w-100" data-toggle="modal" data-target="#exampleModal">Add</button>
@@ -41,8 +68,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,6 +106,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
 

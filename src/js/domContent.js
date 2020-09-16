@@ -11,8 +11,9 @@ const domProject = () => {
     const newProjectInput = document.querySelector('[data-new-project-input]')
 
 
-    const todoProjectTitle = document.querySelector('[data-todos-title]')
     const todosContainer = document.querySelector('[data-todos-container]')
+    const todoProjectTitle = document.querySelector('[data-todos-title]')
+    const allTodos = document.querySelector('[data-todos]')
 
     projectsContainer.addEventListener('click', e => {
         if(e.target.tagName.toLowerCase() === 'a') {
@@ -60,10 +61,9 @@ const domProject = () => {
         } else {
             todosContainer.style.display = ''
             todoProjectTitle.textContent = selectedProject.name
+            // clearElement(allTodos)
+            renderTodos(selectedProject)
         }
-
-
-
     }
 
     const renderProject = () => {
@@ -82,9 +82,16 @@ const domProject = () => {
             projectsContainer.appendChild(projectElement)
         })
     }
+
+    const renderTodos = (selectedProject) => {
+        selectedProject.todos.forEach(todo => {
+            
+        })
+
+    }
     
     const clearElement= (element) => {
-        projectsContainer.innerHTML = ''
+        element.innerHTML = ''
     }
     
     render()

@@ -5,20 +5,13 @@ body {
     background: tomato;
 }
 
-.todo {
-    cursor: pointer;
-     &:hover {
-        background-color: #f8f9fa;
-     }
-}
-
 .active {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.fa-trash-alt {
+.delete-project {
     font-size: 27px;
     color: #000;
 
@@ -30,4 +23,25 @@ body {
 
 .d-none {
     display: none !important;
+}
+
+// .todo-collapse {
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+.priority-display {
+    padding: 6px 12px;
+}
+
+.deadline-display {
+    font-weight: 500;
+    font-size: 25px;
+}
+
+
+.edit-todo, .delete-todo {
+    font-size: 20px;
+    cursor: pointer;
 }
