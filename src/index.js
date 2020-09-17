@@ -1,3 +1,5 @@
+/* eslint-disable no-multi-assign, no-undef, import/no-unresolved */
+
 import 'bootstrap';
 import $ from 'jquery';
 import './styles/main.scss';
@@ -6,7 +8,6 @@ import { domContent } from './js/domContent';
 
 window.jQuery = $;
 window.$ = $;
-/* eslint-disable no-multi-assign, no-undef */
 
 // const jQuery = require('jquery');
 
