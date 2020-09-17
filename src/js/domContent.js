@@ -17,7 +17,6 @@ const domContent = () => {
 
   const todoTemplate = document.getElementById('todo-template');
 
-
   const addTodo = document.getElementById('add-todo');
   const newTodoTitle = document.getElementById('new-todo-title');
   const newTodoDescription = document.getElementById('todo-description-text');
@@ -38,7 +37,6 @@ const domContent = () => {
       render();
     }
   });
-
 
   newProjectFrom.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -79,11 +77,9 @@ const domContent = () => {
     render();
   });
 
-
   const createTodo = (a, b, c, d) => ({
     id: `i${Date.now().toString()}`, name: a, description: b, priority: c, dueDate: d, complete: false,
   });
-
 
   const createProject = name => ({ id: Date.now().toString(), name, todos: [] });
 
@@ -121,7 +117,6 @@ const domContent = () => {
     });
   };
 
-
   const renderTodos = (selectedProject) => {
     selectedProject.todos.forEach(todo => {
       const todoElement = document.importNode(todoTemplate.content, true);
@@ -133,7 +128,6 @@ const domContent = () => {
       const todoDueDate = todoElement.querySelector('.deadline-display');
       const deleteTodo = todoElement.querySelector('.delete-todo');
 
-
       const checkbox = todoElement.querySelector('input');
       checkbox.id = todo.id;
       checkbox.checked = todo.complete;
@@ -141,10 +135,8 @@ const domContent = () => {
       const label = todoElement.querySelector('label');
       label.htmlFor = todo.id;
 
-
       todoLink.setAttribute('href', `#${todo.id}`);
       collapse.setAttribute('id', todo.id);
-
 
       todoLink.append(todo.name);
       todoDescription.append(todo.description);
@@ -168,7 +160,6 @@ const domContent = () => {
       if (todo.complete) {
         todoLink.classList.add('todo-complete');
       }
-
 
       deleteTodo.addEventListener('click', () => {
         selectedProject.todos = selectedProject.todos.filter(todo => todo.id !== collapse.id);
