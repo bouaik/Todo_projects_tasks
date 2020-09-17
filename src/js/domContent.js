@@ -1,11 +1,12 @@
 import { storage } from './storage';
+import { logic } from './logic';// eslint-disable-line
 
 const domContent = () => {
   /* eslint-disable no-use-before-define */
 
   let projects = storage.projectsDb;
 
-  let selectedProjectId = '1';
+  let selectedProjectId = storage.selectedProject;
 
   const projectsContainer = document.querySelector('[data-projects]');
   const newProjectFrom = document.querySelector('[data-new-project-form]');
@@ -16,12 +17,6 @@ const domContent = () => {
   const allTodos = document.querySelector('[data-todos]');
 
   const todoTemplate = document.getElementById('todo-template');
-
-  const addTodo = document.getElementById('add-todo');
-  const newTodoTitle = document.getElementById('new-todo-title');
-  const newTodoDescription = document.getElementById('todo-description-text');
-  const newTodoPriority = document.getElementById('todo-priority-select');
-  const newTodoDueDate = document.getElementById('todo-deadline');
 
   projectsContainer.addEventListener('click', e => {
     if (e.target.tagName.toLowerCase() === 'a') {
@@ -44,7 +39,7 @@ const domContent = () => {
 
     if (projectName == null || projectName === '') return;
 
-    const project = createProject(projectName);
+    const project = logic.createProject(projectName);
 
     newProjectInput.value = null;
 
@@ -52,36 +47,6 @@ const domContent = () => {
     storage.save(projects, selectedProjectId);
     render();
   });
-
-  addTodo.addEventListener('click', () => {
-    const todoTitileName = newTodoTitle.value;
-    const todoDescriptionName = newTodoDescription.value;
-    const todoPriorityName = newTodoPriority.value;
-    const todoDueDateName = newTodoDueDate.value;
-    if (todoTitileName === '' || todoDescriptionName === '' || todoPriorityName === '' || todoDueDateName === '') {
-      alert('fill all fields');// eslint-disable-line
-      return;
-    }
-    const todo = createTodo(todoTitileName, todoDescriptionName, todoPriorityName, todoDueDateName);
-
-    newTodoTitle.value = '';
-    newTodoDescription.value = '';
-    newTodoPriority.value = '';
-    newTodoDueDate.value = '';
-
-    const selectedProject = projects.find(project => project.id === selectedProjectId);
-
-    selectedProject.todos.push(todo);
-    projects[0].todos.push(todo);
-    storage.save(projects, selectedProjectId);
-    render();
-  });
-
-  const createTodo = (a, b, c, d) => ({
-    id: `i${Date.now().toString()}`, name: a, description: b, priority: c, dueDate: d, complete: false,
-  });
-
-  const createProject = name => ({ id: Date.now().toString(), name, todos: [] });
 
   const render = () => {
     clearElement(projectsContainer);
@@ -114,8 +79,8 @@ const domContent = () => {
         projectElement.appendChild(deleteProjectBtn);
       }
 
-      if(project.id === "1") {
-        projectElement.innerHTML = "All Todos"
+      if (project.id === '1') {
+        projectElement.innerHTML = 'All Todos';
       }
 
       projectsContainer.appendChild(projectElement);
@@ -179,6 +144,8 @@ const domContent = () => {
   };
 
   render();
+
+  return { render, renderTodos };
 };
 
 export { domContent };// eslint-disable-line
