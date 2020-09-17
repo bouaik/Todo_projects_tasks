@@ -1,5 +1,62 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body {
-    background: tomato;
-    margin: 0;
-    padding: 0;
-   }
+  background: tomato;
+}
+
+.active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-project {
+  font-size: 27px;
+  color: #000;
+
+  &:hover {
+    color: rgb(128, 47, 0);
+  }
+}
+
+.todo {
+  color: #495057;
+}
+
+.todo:hover {
+  color: #495057;
+  text-decoration: initial;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+  color: rgba(160, 160, 160, 0.733);
+
+  &:hover {
+    text-decoration: line-through;
+    color: rgba(160, 160, 160, 0.733);
+  }
+}
+
+.priority-display {
+  padding: 6px 12px;
+}
+
+.deadline-display {
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.edit-todo,
+.delete-todo,
+.complete-todo {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.project-title,
+[data-todos-title] {
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+}
