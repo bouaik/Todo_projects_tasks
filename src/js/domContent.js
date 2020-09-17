@@ -113,6 +113,11 @@ const domContent = () => {
         deleteProjectBtn.classList.add('delete-project', 'fas', 'fa-trash-alt');
         projectElement.appendChild(deleteProjectBtn);
       }
+
+      if(project.id === "1") {
+        projectElement.innerHTML = "All Todos"
+      }
+
       projectsContainer.appendChild(projectElement);
     });
   };
