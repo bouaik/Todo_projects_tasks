@@ -1,4 +1,7 @@
 import 'bootstrap';
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 import './styles/main.scss';
 
 import { domContent } from './js/domContent';
